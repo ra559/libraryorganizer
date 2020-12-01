@@ -1,0 +1,165 @@
+#libOrg{
+    padding-bottom: 2%;
+}
+
+.logout{
+    position: fixed;
+    width: 95%;
+    padding: 0px;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.btn-xl{
+    font-family: 'Source Sans Pro', serif;
+    font-size: 20px;
+    padding: 10px 20px !important;
+
+}
+
+.form-control-sm{
+    font-family: 'Source Sans Pro', serif;
+    font-size: 15px;
+    width: 80%;
+}
+.form-control-sm::placeholder{
+    font-family: 'Source Sans Pro', serif;
+}
+
+.btn-info{
+    font-family: 'Source Sans Pro', serif;
+    font-size: 30px;
+    padding: 0px;
+    background-color: transparent;
+    border: 0px;
+    box-shadow: 0px 0px 0px black !important;
+
+}
+.btn-info:hover{
+    color:#007bff;
+    background-color: transparent;
+    box-shadow: 0px 0px 0px black;
+}
+body{
+    padding-top: 0px !important;
+}
+
+@media (max-width:991px) { /*point of break responsive*/
+	#libOrg{
+        padding-top: 20%;
+        padding-bottom: 5%;
+        font-size: 85px;
+        width: 80%;
+        margin: auto;
+	}
+
+}
+
+@media (max-width:375px) { /*Iphone X*/
+	#libOrg{
+        padding-top: 30%;
+        padding-bottom: 15%;
+        font-size: 65px;
+        width: 80%;
+        margin: auto;
+	}
+
+}
+@media (max-width:812px) and (max-height: 375px) { /*Iphone X landscape*/
+	#libOrg{
+        padding-top: 10%;
+        padding-bottom: 5%;
+        font-size: 55px;
+        width: 80%;
+        margin: auto;
+	}
+
+}
+
+@media (max-width:360px){ /*Iphone X landscape*/
+	#libOrg{
+        padding-top: 20%;
+        padding-bottom: 5%;
+        font-size: 45px;
+        width: 80%;
+        margin: auto;
+	}
+    .btn-xl{
+        font-family: 'Source Sans Pro', serif;
+        font-size: 20px;
+        padding: 5px 10px !important;
+    }
+
+}
+@media (max-width:411px){ /*Pixel 2 X*/
+	#libOrg{
+        padding-top: 20%;
+        padding-bottom: 5%;
+        font-size: 55px;
+        width: 80%;
+        margin: auto;
+	}
+}
+
+@media (max-width:731px) and (max-height: 411px) { /*Pixel 2 X landscape*/
+	#libOrg{
+        padding-top: 10%;
+        padding-bottom: 5%;
+        font-size: 55px;
+        width: 80%;
+        margin: auto;
+	}
+
+}
+
+@media (max-width:320px){ /*Iphone SE */
+	#libOrg{
+        padding-top: 20%;
+        padding-bottom: 5%;
+        font-size: 55px;
+        width: 80%;
+        margin: auto;
+	}
+        .btn-xl{
+        font-family: 'Source Sans Pro', serif;
+        font-size: 20px;
+        padding: 5px 5px !important;
+    }
+
+}
+
+@media (max-width:568px) and (max-height: 320px) { /*Pixel 2 X landscape*/
+	#libOrg{
+        padding-top: 10%;
+        padding-bottom: 2.5%;
+        font-size: 45px;
+        width: 60%;
+        margin: auto;
+
+	}
+    .btn-xl{
+        font-family: 'Source Sans Pro', serif;
+        font-size: 15px;
+        padding: 5px 5px !important;
+    }
+    .btn-info{
+        font-family: 'Source Sans Pro', serif;
+        font-size: 25px;
+        padding: 0px;
+        background-color: transparent;
+        border: 0px;
+        box-shadow: 0px 0px 0px black !important;
+
+    }
+
+}
+@media (max-width:736px) and (max-height: 414px) { /*Pixel 2 X landscape*/
+	#libOrg{
+        padding-top: 10%;
+        padding-bottom: 5%;
+        font-size: 55px;
+        width: 80%;
+        margin: auto;
+	}
+
+}
