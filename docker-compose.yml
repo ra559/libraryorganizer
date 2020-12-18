@@ -1,0 +1,7 @@
+version: "2"
+services:
+  app:
+    build: ./app
+    container_name: "Flask_App"
+    ports:
+      - "5000:5000"
