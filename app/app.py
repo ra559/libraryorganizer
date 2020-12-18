@@ -1,4 +1,7 @@
 from flask import Flask, url_for, render_template, request, url_for, redirect, session
+from typing import List, Dict
+import mysql.connector
+import simplejson as json
 
 app = Flask(__name__, template_folder='templates')
 
