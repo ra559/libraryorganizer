@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 text-right imgcont box">
-      <table>
+    <div class="container-fluid">
+      <table class="table-responsive-lg">
               <tr><td><b>Tittle</b></td><td class="text-left">The Stand</td></tr>
               <tr><td><b>Author</b></td><td class="text-left">Stephen King</td></tr>
               <tr><td><b>Language</b></td><td class="text-left">English</td></tr>
@@ -14,12 +12,4 @@
               <tr><td><b>Pages</b></td><td class="text-left">823</td></tr>
       </table>
     </div>
-
-    <div class="col-md-6 box">
-      <img class="rounded" src="img/thestand.jpeg" alt="">
-       <input class="btn btn-success addbook" type="submit" value="Add Book">
-      </div>
-  </div>
-
-</div>
 {% endblock %}
