@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="main-w3layouts wrapper">
+		<h1>Login</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="#" method="post">
+					<input class="text" type="text" name="Username" placeholder="Username" required="">
+					<input class="text" type="password" name="password" placeholder="Password" required="">
+					<input type="submit" value="login">
+				</form>
+			</div>
+            <p><a href="#" onclick="show()" >Forgot your password?!</a></p>
+
+		</div>
+        <div class="container-fluid">
+            <form action="#" method="post" style="display: none;" id="forgot">
+                <p>A reset email will be sent to your email address. Click on the link to reset your password.</p>
+                <input type="email" placeholder="Email" required="">
+                <input type="submit" value="SUBMIT">
+            </form>
+        </div>
+
+	</div>
+<script>
+function show() {
+  var x = document.getElementById("forgot");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+{% endblock %}

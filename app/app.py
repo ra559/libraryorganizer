@@ -22,6 +22,9 @@ def login():
 def signup():
     return render_template("signup.html")
 
+@app.route("/forgot")
+def forgot():
+    return render_template("forgot.html")
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

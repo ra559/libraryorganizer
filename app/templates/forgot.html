@@ -1,19 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 	<div class="main-w3layouts wrapper">
-		<h1>SignUp</h1>
+		<h1>Password Reset</h1>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 				<form action="#" method="post">
 					<input class="text" type="text" name="Username" placeholder="Username" required="">
-					<input class="text email" type="email" name="email" placeholder="Email" required="">
 					<input class="text" type="password" name="password" placeholder="Password" required="">
-					<input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
-					<input type="submit" value="SIGNUP">
+                    <input class="text" type="password" name="password" placeholder="Re-Password" required="">
+					<input type="submit" value="change password">
 				</form>
-				<p>Don't have an Account? <a href="#">Login Now!</a></p>
+				<p><a href="#">Forgot your password?!</a></p>
 			</div>
-
 		</div>
 	</div>
 {% endblock %}
