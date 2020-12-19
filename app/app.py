@@ -25,6 +25,7 @@ def liborg() -> List[Dict]:
 
     return result
 
+#App routes
 @app.route('/')
 def index() -> str:
     js = json.dumps(liborg())
