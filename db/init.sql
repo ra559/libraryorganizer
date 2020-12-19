@@ -1,12 +1,23 @@
-CREATE DATABASE citiesData;
-use citiesData;
+CREATE DATABASE liborg;
+USE liborg;
 
-CREATE TABLE IF NOT EXISTS tblCitiesImport (
-    `fldName` VARCHAR(21) CHARACTER SET utf8,
-    `fldLat` NUMERIC(6, 4),
-    `fldLong` NUMERIC(7, 4),
-    `fldCountry` VARCHAR(19) CHARACTER SET utf8,
-    `fldAbreviation` VARCHAR(3) CHARACTER SET utf8,
-    `fldCapitalStatus` VARCHAR(7) CHARACTER SET utf8,
-    `fldPopulation` INT
+CREATE TABLE users(
+    userid INT NOT NULL,
+    useremail varchar(255) NOT NULL,
+    userpasswd VARCHAR(255) NOT NULL,
+    PRIMARY KEY (userid)
 );
+
+CREATE TABLE books(
+    bookid INT NOT NULL,
+    tittle varchar(255) NOT NULL,
+    author varchar(255),
+    lang varchar(255),
+    genre varchar(255),
+    publisher varchar(255),
+    pubyear INT,
+    isbn BIGINT,
+    pages INT,
+    PRIMARY KEY (bookid)
+);
+
