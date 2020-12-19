@@ -2,6 +2,99 @@
 List of Books
 {% endblock %}
 {% block content %}
+
+<!-- Style Starts Here-->
+<div class="container">
+    <!-- In style for table Start-->
+    <style>
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+        @media
+        only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px)  {
+        /* Force table to not be like tables anymore */
+        table, thead, tbody, th, td, tr {
+        display: block;
+        }
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        }
+        tr { border: 1px solid #ccc; }
+        th {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        }
+        th:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        }
+        /*
+        Label the data
+        */
+        th:nth-of-type(1):before { content: "Title"; }
+        th:nth-of-type(2):before { content: "Author"; }
+        th:nth-of-type(3):before { content: "Language"; }
+        th:nth-of-type(4):before { content: "Genre"; }
+        th:nth-of-type(5):before { content: "Publisher"; }
+        th:nth-of-type(6):before { content: "Publication Date"; }
+        th:nth-of-type(7):before { content: "ISBN"; }
+        th:nth-of-type(8):before { content: "Pages"; }
+        }
+    </style>
+    <!--In Style end-->
+    <table style="border: 2px solid black; border-spacing: 15px;
+        margin-right: auto; margin-left: auto; overflow-x: auto; padding: 4px;
+        "class="table table-striped">
+        <thead  class="thead-dark">
+            <tr>
+                <th scope="col">Title </th>
+                <th scope="col">Author</th>
+                <th scope="col">Language</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Publisher</th>
+                <th scope="col">Publication Date</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Pages</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">The Stand </th>
+                <th> Stephen King </th>
+                <th> English </th>
+                <th> Post Apocalyptic </th>
+                <th> Double Day </th>
+                <th> October 3, 1978</th>
+                <th> 978-0-385-12168-2</th>
+                <th> 823</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+=======
 <table style="border: 1px solid black; border-collapse: collapse" class="table">
     <thead class="thead-dark">
         <tr>
