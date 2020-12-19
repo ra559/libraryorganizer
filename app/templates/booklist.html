@@ -1,14 +1,31 @@
-% extends "base.html" %}
-{% block content %}
- <div class="container-fluid"><table class="table-responsive-lg">
-              <tbody><tr><td><b>Title</b></td></tr>
-              <tr><td><b>Author</b></td></tr>
-              <tr><td><b>Language</b></td></tr>
-              <tr><td><b>Genre</b></td></tr>
-              <tr><td><b>Publisher</b></td></tr>
-              <tr><td><b>Publication Date</b></td></tr>
-              <tr><td><b>ISBN</b></td></tr>
-              <tr><td><b>Pages</b></td></tr>
-      </tbody></table>
-    </div>
+{% block title %}
+List of Books
 {% endblock %}
+{% block content %}
+<table style="border: 1px solid black; border-collapse: collapse" class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Title </th>
+            <th scope="col">Author</th>
+            <th scope="col">Language</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Publisher</th>
+            <th scope="col">Publication Date</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Pages</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">The Stand </th>
+            <th> Stephen King </th>
+          <th> English </th>
+          <th> Post Apocalyptic </th>
+          <th> Double Day </th>
+          <th> October 3, 1978</th>
+          <th> 978-0-385-12168-2</th>
+          <th> 823</th>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}</body></html>
