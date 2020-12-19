@@ -1,6 +1,5 @@
-from flask import Flask, render_template
-from flask_wtf import FlaskForm
-
+from flask import Flask, render_template, request
+from flask_mysqldb import MySQL
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'my key'
 
@@ -15,9 +14,14 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/signup")
+@app.route("/signup", methods=['GET', 'POST'])
 def signup():
-    return render_template("signup.html")
+    if request.method == 'POST':
+        userDetails = request.form
+        email = userDetails['email']
+        password = userDetails['password']
+    else:
+        return render_template("signup.html")
 
 @app.route("/book")
 def book():
@@ -38,7 +42,7 @@ def user():
 def booklist():
     return render_template("booklist.html")
 
-@app.rout("/profile")
+@app.route("/profile")
 def profile():
     return render_template("profile.html")
 
