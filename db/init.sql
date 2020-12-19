@@ -2,10 +2,9 @@ CREATE DATABASE liborg;
 USE liborg;
 
 CREATE TABLE users(
-    userid INT NOT NULL,
-    useremail varchar(255) NOT NULL,
-    userpasswd VARCHAR(255) NOT NULL,
-    PRIMARY KEY (userid)
+    user_email varchar(255) NOT NULL,
+    user_passwd VARCHAR(255) NOT NULL,
+    PRIMARY KEY (user_email)
 );
 
 CREATE TABLE books(
@@ -21,3 +20,4 @@ CREATE TABLE books(
     PRIMARY KEY (bookid)
 );
 
+INSERT INTO USERS VALUES ('123@HAHA.COM','123');

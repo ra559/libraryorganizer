@@ -1,57 +1,46 @@
-from flask import Flask, url_for, render_template, request, url_for, redirect, session, abort, flash
-from random import randint
+from flask import Flask, render_template
 from flask_wtf import FlaskForm
-from typing import List, Dict
-import mysql.connector
-import simplejson as json
-from wtforms import StringField, PasswordField
 
-import random
-import string
-
-def random_string_generator(str_size, allowed_chars):
-    return ''.join(random.choice(allowed_chars) for x in range(str_size))
-
-chars = string.ascii_letters + string.punctuation
-size = 12
-
-app = Flask(__name__, template_folder='templates')
-app.config['SECRET_KEY'] = random_string_generator(size, chars)
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'my key'
 
 
-@app.route("/", methods=["POST", "GET"])
+@app.route("/")
 def home():
     return render_template('index.html')
 
 
-@app.route("/login", methods=["POST"])
+@app.route("/login")
 def login():
     return render_template("login.html")
 
 
-@app.route("/signup", methods=["POST", "GET"])
+@app.route("/signup")
 def signup():
     return render_template("signup.html")
 
-
-@app.route("/book", methods=["POST", "GET"])
+@app.route("/book")
 def book():
     return render_template("book.html")
 
 
-@app.route("/forgot", methods=["POST", "GET"])
+@app.route("/forgot")
 def forgot():
     return render_template("forgot.html")
 
 
-@app.route("/user", methods=["POST", "GET"])
+@app.route("/user")
 def user():
     return render_template("user.html")
 
 
-@app.route("/booklist", methods=["POST", "GET"])
+@app.route("/booklist")
 def booklist():
     return render_template("booklist.html")
+
+@app.rout("/profile")
+def profile():
+    return render_template("profile.html")
 
 
 if __name__ == '__main__':
