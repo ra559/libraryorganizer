@@ -2,3 +2,14 @@ INSERT INTO books VALUES
 (123456,'the next person you meet in heaven','Mitch Albom','English','Fiction','Harper',2018,9780062294449,224),
 (156324,'the five people you meet in heaven','Mitch Albom','English','Fiction','Hyperion',2003,9780786868711,196),
 (132546,'have a little faith','Mitch Albom','English','Fiction','Hyperion',2009,9780786868728,254);
+
+    error = None
+    user = request.form['Username']
+    email = request.form['email']
+    password = request.form['password']
+    cpassword = request.form['passcheck']
+    if password != cpassword:
+        error = "Password did not match"
+        return render_template("signup.html")
+    else:
+        return render_template("login.html")
