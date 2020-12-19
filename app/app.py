@@ -1,55 +1,45 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'my key'
+
+#connection to database
+app.config['MYSQL_HOST'] = 'db'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_PORT'] = 3306
+app.config['MYSQL_DB'] = 'liborg'
 mysql = MySQL(app)
 
 
 
-
-@app.route("/")
-def home():
-    return render_template('index.html')
-
-
-@app.route("/login")
+@app.route('/')
 def login():
-    return render_template("login.html")
+    return render_template('login.html')
 
-
-@app.route("/signup", methods=['GET', 'POST'])
-def signup():
+#login page route
+@app.route('/insert', methods = ['POST'])
+def insert():
     if request.method == 'POST':
-        userDetails = request.form
-        email = userDetails['email']
-        password = userDetails['password']
+       user_email =  request.form['user_email']
+       user_passwd =  request.form['user_passwd']
 
-    else:
-        return render_template("signup.html")
+    cursor = mysql.connection.cursor()
+    cursor.execute("INSERT INTO users (user_email, user_passwd VALUES (%s %s)", (user_email,user_passwd))
+    mysql.connection.commit()
+    return redirect(url_for('login.html'))
 
-@app.route("/book")
-def book():
-    return render_template("book.html")
+#signup page route
+@app.route('/insert_2', methods = ['POST'])
+def insert():
+    if request.method == 'POST':
+       user_email =  request.form['user_email']
+       user_passwd =  request.form['user_passwd']
 
-
-@app.route("/forgot")
-def forgot():
-    return render_template("forgot.html")
-
-
-@app.route("/user")
-def user():
-    return render_template("user.html")
-
-
-@app.route("/booklist")
-def booklist():
-    return render_template("booklist.html")
-
-@app.route("/profile")
-def profile():
-    return render_template("profile.html")
+    cursor = mysql.connection.cursor()
+    cursor.execute("INSERT INTO users (user_email, user_passwd VALUES (%s %s)", (user_email,user_passwd))
+    mysql.connection.commit()
+    return redirect(url_for('signup.html'))
 
 
 if __name__ == '__main__':
