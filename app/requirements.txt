@@ -9,6 +9,7 @@ distlib==0.3.0
 distro==1.4.0
 Flask==1.1.2
 Flask-MySQL==1.5.1
+Flask-MySQLdb==0.2.0
 Flask-WTF==0.14.3
 html5lib==1.0.1
 idna==2.8
@@ -18,7 +19,9 @@ Jinja2==2.11.2
 lockfile==0.12.2
 MarkupSafe==1.1.1
 msgpack==0.6.2
+mysql==0.0.2
 mysql-connector==2.2.9
+mysqlclient==2.0.2
 packaging==20.3
 pep517==0.8.2
 progress==1.5
