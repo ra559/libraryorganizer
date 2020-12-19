@@ -4,7 +4,11 @@
 {% block content %}
         <h1 class="jumbotron">Library Organizer</h1>
         <div class="container">
-            <button type="button" class="btn btn-primary">Log in</button>
-            <button type="button" class="btn btn-secondary">Register</button>
+            <form action="/login" method="post">
+                <button type="submit" class="btn btn-primary" id='loginbtn'>Log in</button>
+            </form>
+            <form action="/signup" method="post">
+                <button type="submit" class="btn btn-secondary" id="'registerbtn'">Register</button>
+            </form>
         </div>
 {% endblock %}

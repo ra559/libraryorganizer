@@ -10,9 +10,17 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
        <title>{% block title%} {% endblock %}</title>
+        <style>
+            *{
+                background-color: transparent;
+            }
+            body{
+                background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);
+            }
+
+        </style>
     </head>
     <body>
-
          {% block content %}{% endblock %}
     </body>
 </html>
