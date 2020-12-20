@@ -12,7 +12,6 @@ app.config['MYSQL_DB'] = 'liborg'
 mysql = MySQL(app)
 
 
-
 @app.route('/')
 def login():
     return render_template('login.html')
