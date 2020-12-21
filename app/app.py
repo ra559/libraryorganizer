@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
+import requests
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'my key'
 mysql = MySQL(app)
-
-
 
 
 @app.route("/")
@@ -28,6 +27,7 @@ def signup():
     else:
         return render_template("signup.html")
 
+
 @app.route("/book")
 def book():
     return render_template("book.html")
@@ -47,9 +47,11 @@ def user():
 def booklist():
     return render_template("booklist.html")
 
+
 @app.route("/profile")
 def profile():
     return render_template("profile.html")
+
 
 
 if __name__ == '__main__':
