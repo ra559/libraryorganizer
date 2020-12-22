@@ -1,15 +1,19 @@
 from typing import List, Dict
-from flask import Flask, request, Response, redirect, url_for
+from flask import Flask, request, Response, redirect, url_for, session
 from flask import render_template
 from flaskext.mysql import MySQL
 from pymysql.cursors import DictCursor
-import requests
-import re
 from authlib.integrations.flask_client import OAuth
+import os
 
+from auth_decorator import login_required
+
+
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key ='Ww6!w+C-O7g0g^Vu'
+app.secret_key =os.getenv("APP_SECRET_KEY")
 mysql = MySQL(cursorclass=DictCursor)
 
 #OAuth
@@ -36,25 +40,29 @@ mysql.init_app(app)
 
 
 @app.route('/')
+@login_required
 def index():
-    return render_template('index.html')
+    email = dict(session)['email']
+    return f'Hello, you are logge in as {email}!'
 
 
 @app.route('/login')
 def login():
-    email = dict(session).get('email', None)
-    google = oauth.create_client('google')
+    google = oauth.create_client('google')  # create the google oauth client
     redirect_uri = url_for('authorize', _external=True)
-    return google.authorize_redirect(redirect_uri) , f'Hello, {email}!'
+    return google.authorize_redirect(redirect_uri)
 
 @app.route('/authorize')
 def authorize():
-    google = oauth.create_client('google')
-    token = google.authorize_access_token()
-    resp = google.dget('userInfo')
+    google = oauth.create_client('google')  # create the google oauth client
+    token = google.authorize_access_token()  # Access token from google (needed to get user info)
+    resp = google.get('userinfo')  # userinfo contains stuff u specificed in the scrope
     user_info = resp.json()
-    # do something with the token and profile
-    session['email'] = user_info['email']
+    user = oauth.google.userinfo()  # uses openid endpoint to fetch user info
+    # Here you use the profile/user data that you got and query your database find/register the user
+    # and set ur own data in the session not the profile from google
+    session['profile'] = user_info
+    session.permanent = True  # make the session permanant so it keeps existing after broweser gets closed
     return redirect('/')
 
 
@@ -151,6 +159,11 @@ def bookadd():
         mysql.get_db().commit()
         return render_template('user.html')
 
+@app.route('/logout')
+def logout():
+    for key in list(session.keys()):
+        session.pop(key)
+    return redirect('/')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
