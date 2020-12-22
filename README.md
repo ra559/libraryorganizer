@@ -1,4 +1,4 @@
-# libraryorganiazer
+# Library Organizer
 library organaizer
 
 ## Description
