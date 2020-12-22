@@ -67,17 +67,7 @@ def list():
 
 
 # called by regristration page to register user
-@app.route('/insert', methods=['POST', 'GET'])
-def insert():
-    if request.method == 'POST':
-        user_email = request.form['user_email']
-        user_passwd = request.form['user_password']
-        cursor = mysql.get_db().cursor()
-        cursor.execute("""INSERT INTO users (user_email,user_passwd) VALUES (%s,%s)""", (user_email, user_passwd))
-        mysql.get_db().commit()
-        return render_template('login.html')
-    else:
-        return render_template('register.html')
+
 
 
 @app.route('/user', methods=["GET", "POST"])
