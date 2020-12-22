@@ -1,22 +1,18 @@
+import re
 from typing import List, Dict
+
+import requests
 from flask import Flask, request, Response, redirect, url_for, session
 from flask import render_template
 from flaskext.mysql import MySQL
 from pymysql.cursors import DictCursor
 from authlib.integrations.flask_client import OAuth
-import os
-
-from auth_decorator import login_required
-
-
-from dotenv import load_dotenv
-load_dotenv()
 
 app = Flask(__name__)
-app.secret_key =os.getenv("APP_SECRET_KEY")
+app.secret_key = ("this is a secreted")
 mysql = MySQL(cursorclass=DictCursor)
 
-#OAuth
+# OAuth
 oauth = OAuth(app)
 google = oauth.register(
     name='google',
@@ -40,10 +36,8 @@ mysql.init_app(app)
 
 
 @app.route('/')
-@login_required
 def index():
-    email = dict(session)['email']
-    return f'Hello, you are logge in as {email}!'
+    return render_template('index.html')
 
 
 @app.route('/login')
@@ -51,6 +45,7 @@ def login():
     google = oauth.create_client('google')  # create the google oauth client
     redirect_uri = url_for('authorize', _external=True)
     return google.authorize_redirect(redirect_uri)
+
 
 @app.route('/authorize')
 def authorize():
@@ -75,7 +70,6 @@ def list():
 
 
 # called by regristration page to register user
-
 
 
 @app.route('/user', methods=["GET", "POST"])
@@ -109,8 +103,8 @@ def booksearch():
             publisher = item['publisher']
 
         return render_template('list2.html', isbn=isbn[0], title=title, author=author[0], lang=lang[0],
-                                   genre=genre[0],
-                                   publisher=publisher[0])
+                               genre=genre[0],
+                               publisher=publisher[0])
     except:
         return render_template('booknotfound.html')
 
@@ -144,8 +138,8 @@ def bookadd():
             genre = ['Undefined']
         publisher = item['publisher']
 
-# validates the input for database eliminating all special chactacters.
-# Example: Harry's will turn into Harrys
+        # validates the input for database eliminating all special chactacters.
+        # Example: Harry's will turn into Harrys
         isbn = re.sub('[^A-Za-z0-9 ]+', '', str(isbn[0]))
         title = re.sub('[^A-Za-z0-9 ]+', '', str(title))
         author = re.sub('[^A-Za-z0-9 ]+', '', str(author))
@@ -159,11 +153,13 @@ def bookadd():
         mysql.get_db().commit()
         return render_template('user.html')
 
+
 @app.route('/logout')
 def logout():
     for key in list(session.keys()):
         session.pop(key)
     return redirect('/')
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
