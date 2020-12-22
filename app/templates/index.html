@@ -5,9 +5,8 @@
   <header class="mb-auto">
     <div>
       <h3 class="float-md-start mb-0"></h3>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
+      <nav class="nav nav-masthead justify-content-center float-md-end" style="display: none;">
         <a class="nav-link" href="{{ url_for('login')}}">LOGIN</a>
-        <a class="nav-link" href="{{ url_for('insert')}}">REGISTER</a>
       </nav>
     </div>
   </header>
@@ -16,7 +15,7 @@
     <h1>Library Organizer</h1>
     <p class="lead">Scan or enter the ISBN number of your books and organize them!</p>
     <p class="lead">
-      <a href="{{ url_for('insert')}}" class="btn btn-lg btn-primary fw-bold border-white">Get Started</a>
+      <a href="{{ url_for('login')}}" class="btn btn-lg btn-primary fw-bold border-white">Get Started</a>
     </p>
   </main>
 {% endblock %}
