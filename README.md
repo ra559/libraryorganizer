@@ -1,5 +1,6 @@
 # Library Organizer
 library organaizer
+![Program running](programrunning.gif)
 
 ## Description
 The goal of this project is to write a web application that allows individuals to organize their books. The application uses the [Openlibrary API](https://openlibrary.org/dev/docs/api/books) to query key details about the books and arranges them in a table format.
