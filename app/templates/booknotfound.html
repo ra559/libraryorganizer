@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container text-center">
+        <p></p>
+        <p></p>
+        <div class="text-center lead"><h1>Book Not Found</h1></div>
+
+        <form action="{{ url_for('user') }}" method="post">
+           <button type="submit" class="btn btn-primary">Go Back</button>
+        </form>
+    </div>
+{% endblock %}

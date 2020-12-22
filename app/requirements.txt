@@ -1,0 +1,17 @@
+certifi==2020.12.5
+chardet==4.0.0
+click==7.1.2
+filter==0.0.0.20200724
+Flask==1.1.2
+Flask-MySQL==1.5.1
+idna==2.10
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+mysql==0.0.2
+mysqlclient==2.0.2
+numpy==1.19.4
+PyMySQL==0.10.1
+requests==2.25.1
+urllib3==1.26.2
+Werkzeug==1.0.1

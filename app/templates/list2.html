@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                background-color: white;
+                color: black;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+
+            @media only screen and (max-width: 760px),
+            (min-device-width: 768px) and (max-device-width: 1024px) {
+                /* Force table to not be like tables anymore */
+                table, thead, tbody, th, td, tr {
+                    display: block;
+                }
+
+                /* Hide table headers (but not display: none;, for accessibility) */
+                thead tr {
+                    position: absolute;
+                    top: -9999px;
+                    left: -9999px;
+                }
+
+                tr {
+                    border: 1px solid #ccc;
+                }
+
+                th {
+                    /* Behave  like a "row" */
+                    border: none;
+                    border-bottom: 1px solid #eee;
+                    position: relative;
+                    padding-left: 50%;
+                }
+
+                th:before {
+                    /* Now like a table header */
+                    position: absolute;
+                    /* Top/left values mimic padding */
+                    top: 6px;
+                    left: 6px;
+                    width: 45%;
+                    padding-right: 10px;
+                    white-space: nowrap;
+                }
+
+                /*
+                Label the data
+                */
+                th:nth-of-type(1):before {
+                    content: "Title";
+                }
+
+                th:nth-of-type(2):before {
+                    content: "Author";
+                }
+
+                th:nth-of-type(3):before {
+                    content: "Language";
+                }
+
+                th:nth-of-type(4):before {
+                    content: "Genre";
+                }
+
+                th:nth-of-type(5):before {
+                    content: "Publisher";
+                }
+
+                th:nth-of-type(6):before {
+                    content: "Publication Date";
+                }
+
+                th:nth-of-type(7):before {
+                    content: "ISBN";
+                }
+
+                th:nth-of-type(8):before {
+                    content: "Pages";
+                }
+            }
+        </style>
+        <div class="text-center lead">
+            <h1>{{ title }}</h1>
+        </div>
+        <form action="{{ url_for('booksearch')}}" method="post ">
+            <table style="border: 2px solid black; border-spacing: 15px;
+        margin-right: auto; margin-left: auto; overflow-x: auto; padding: 4px; width: 75%;
+        " class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th>ISBN</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Language</th>
+                    <th>Genre</th>
+                    <th>Publisher</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ isbn }}</td>
+                    <td>{{ title }}</td>
+                    <td>{{ author }}</td>
+                    <td>{{ lang }}</td>
+                    <td>{{ genre }}</td>
+                    <td>{{ publisher }}</td>
+                </tr>
+                <tr>
+            </table>
+
+        </form>
+        <form action="{{ url_for('bookadd')}}" method="post">
+            <input type="checkbox" name="addbook">
+            <input type="hidden" name="addbookisbn" value="{{ isbn }}">
+            <button type="submit" class="btn btn-primary">Add to Book list</button>
+        </form>
+        <form action="{{ url_for('list2redirect') }}" method="post">
+            <button type="submit" class="btn btn-secondary">Search another</button>
+        </form>
+    </div>
+{% endblock %}
