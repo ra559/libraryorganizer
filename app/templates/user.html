@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %} User {% endblock %}
+{% block content %}
+<header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0"></h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+      </nav>
+    </div>
+  </header>
+
+  <main class="px-3">
+    <h1>Library Organizer</h1>
+    <span class="lead">
+      <a href="{{ url_for('list')}}" class="btn btn-lg btn-primary fw-bold border-white">All Books</a>
+    </span>
+        <span class="lead">
+      <a class="btn btn-lg btn-primary fw-bold border-white" onclick="show()">Search Books</a>
+    </span>
+  </main>
+<p></p>
+<p></p>
+<form action="{{url_for('booksearch')}}" id="isbn" style="display: none;" method="POST">
+  <input type="text" placeholder="ENTER ISBN" name="isbn">
+  <input type="submit" class="btn btn-sm btn-primary fw-bold border-green">
+</form>
+<script>
+function show() {
+  var x = document.getElementById("isbn");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+{% endblock %}
