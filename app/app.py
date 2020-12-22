@@ -5,8 +5,27 @@ from flaskext.mysql import MySQL
 from pymysql.cursors import DictCursor
 import requests
 import re
+from authlib.integrations.flask_client import OAuth
+
+
 app = Flask(__name__)
+app.secret_key ='Ww6!w+C-O7g0g^Vu'
 mysql = MySQL(cursorclass=DictCursor)
+
+#OAuth
+oauth = OAuth(app)
+google = oauth.register(
+    name='google',
+    client_id='90827938468-2nabe3i97f9p51m2hi8g5r2q70fph8a2.apps.googleusercontent.com',
+    client_secret='V-R0a4HVGiYZkPFAvE70T1Z-',
+    access_token_url='https://accounts.google.com/o/oauth2/token',
+    access_token_params=None,
+    authorize_url='https://accounts.google.com/o/oauth2/auth',
+    access_params=None,
+    authorize_base_url='https://googleapis.com/oauth2/vi/',
+    api_base_url='https://googleapis.com/oauth2/vi/',
+    client_kwargs={'scope': 'openid email profile'},
+)
 
 app.config['MYSQL_DATABASE_HOST'] = 'db'
 app.config['MYSQL_DATABASE_USER'] = 'root'
@@ -21,12 +40,22 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/login', methods=['POST', 'GET'])
+@app.route('/login')
 def login():
-    if request.method == 'POST':
-        return render_template('user.html')
-    else:
-        return render_template('login.html')
+    email = dict(session).get('email', None)
+    google = oauth.create_client('google')
+    redirect_uri = url_for('authorize', _external=True)
+    return google.authorize_redirect(redirect_uri) , f'Hello, {email}!'
+
+@app.route('/authorize')
+def authorize():
+    google = oauth.create_client('google')
+    token = google.authorize_access_token()
+    resp = google.dget('userInfo')
+    user_info = resp.json()
+    # do something with the token and profile
+    session['email'] = user_info['email']
+    return redirect('/')
 
 
 @app.route('/list', methods=['GET'])
