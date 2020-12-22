@@ -117,7 +117,7 @@ def bookadd():
             genre = ['Undefined']
         publisher = item['publisher']
 
-# validates the input for database eliminating all special chactacters.
+# validates the input for database eliminating all special chactacters
 # Example: Harry's will turn into Harrys
         isbn = re.sub('[^A-Za-z0-9 ]+', '', str(isbn[0]))
         title = re.sub('[^A-Za-z0-9 ]+', '', str(title))
