@@ -1,5 +1,5 @@
 # Library Organizer
-library organaizer
+
 ![Program running](programrunning.gif)
 
 ## Description
